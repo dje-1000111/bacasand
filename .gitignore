@@ -4,8 +4,6 @@ mypy.ini
 docker-compose.yml
 *.py[cod]
 .venv
-venv
-venv.bak/ 
 .env
 .vscode
 db.sqlite3
