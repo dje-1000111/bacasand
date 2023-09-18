@@ -1,0 +1,27 @@
+__pycache__/
+.mypy_cache
+mypy.ini
+DockerFile
+*.py[cod]
+.venv
+venv.bak/ 
+.env
+.vscode
+db.sqlite3
+staticfiles/
+
+# Tranlations from locale
+django-translations/
+# extras files
+extras/
+
+# Unit test / coverage reports 
+htmlcov/ 
+.tox/ 
+.coverage 
+.coverage.* 
+.cache 
+.pytest_cache/ 
+nosetests.xml 
+coverage.xml 
+*.cover 

@@ -1,0 +1,49 @@
+{% block signin %}
+        <noscript>
+            <form method="post">{% csrf_token %}
+        </noscript>
+
+        {% comment %} {{ form.email.errors }} {% endcomment %}
+
+        {% for i in  form.non_field_errors %} {{i}}  {% endfor %}
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {% if form.email.errors %}
+        <div class="alert alert-danger mt-3">
+            {{ form.email.errors|escape }}
+        </div>
+        {% endif %}        
+        {% comment %} {% if "password1" in form.errors %}
+            <ul class="errorlist"><li>Le mot de passe est incorrect (8 caractères minimum).</li></ul>
+        {% endif %}  {% endcomment %}
+
+        {% comment %} {{ form.password.errors }} {% endcomment %}
+        {{ form.password.label_tag }}
+        {{ form.password }} 
+        {% if form.password.errors %}
+        <div class="alert alert-danger mt-3">
+            {{ form.password.errors|escape }}
+        </div>
+        {% endif %}
+        {% comment %} {{form}} {% endcomment %}
+
+        {% comment %} {% if form.errors %}
+        {% for field in form %}
+            {% for error in field.errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+            <div class="alert alert-danger">
+                <strong>{{ error|escape }}</strong>
+            </div>
+        {% endfor %}
+    {% endif %} {% endcomment %}
+
+        <noscript>
+                <button type="submit" class="btn btn-primary" value="sign-in" id="signin-btn">Se connecter</button>
+            </form>
+        </noscript>
+{% endblock signin %}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+{% load i18n %}
+{% load static %}
+{% load extra_filters %}
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}{% endblock title %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="{% static 'img/favItem.png' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body id="base">
+  {% csrf_token %}
+  <script type="text/javascript">
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const ajax_url_update_item = "{# url 'vmc_sandbox:get_datas_from_backend' #}"
+    const ajax_url_update_modal = "{# url 'vmc_sandbox:update_modal' #}"
+    const ajax_url_get_form_create = "{% url 'vmc_sandbox:create_form' %}"
+    const ajax_url_save_new_item = "{# url 'vmc_sandbox:save_item' #}"
+    const ajax_url_index = "{% url 'vmc_sandbox:todolist' %}"
+    const ajax_url_done = "{% url 'vmc_sandbox:is_done' %}"
+    const ajax_url_post_signin = "{% url 'auth:signin' %}"
+    const ajax_url_post_signup = "{% url 'auth:signup' %}"
+  </script>
+  {% spaceless %}
+<nav class="navbar navbar-expand-lg navbar-bg mb-5 z-2">
+  <div class="container-fluid">
+    <button class="navbar-toggler me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="/"><span class="applogo">BacASand</span>
+      <p class="lh-applogo">{% translate slogan %}</p>
+    </a>
+    <button id="ligbtn" data-light="light" class="light-button btn ms-auto me-0 order-lg-last"
+    hidden>
+    <i class="fa-solid fa-sun fa-xl"></i>
+    </button>
+    <button id="darkbtn" data-dark="dark" class="dark-button btn ms-auto me-0 order-lg-last">
+      <i class="fa-solid fa-moon fa-xl"></i>
+    </button>
+    <div class="collapse navbar-collapse d-lg-flex" id="navbarSupportedContent">
+        {% if user.is_authenticated %}
+          <ul class="navbar-nav col-lg-6 justify-content-lg-start">
+            <li class="nav-item dropdown">
+              <a class="dropdown-toggle btn btn-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {% translate myaccount %} ({{user.username}})
+              </a>
+              <ul class="dropdown-menu mb-2">
+                <li><a class="dropdown-item" href="{% url 'vmc_sandbox:todolist' %}">App</a></li>
+                <li><a class="dropdown-item" href="{% url 'auth:profile' %}">{% translate profile %}</a></li>
+                {% if user.is_staff %}
+                <li><a class="dropdown-item" href="{% url 'vmc_sandbox:mailbox_thread' %}">{% translate mailbox %}</a></li>
+                {% endif %}
+                <li><a class="dropdown-item" href="{% url 'auth:signout' %}">{% translate logout %}</a></li>
+              </ul>
+            </li>
+          </ul>
+          <div class="d-lg-flex col-lg-5 justify-content-lg-end">
+        {% else %}
+            <ul class="list-group list-group-horizontal-lg ms-auto">    
+              <li class="btn btn-secondary m-2">    
+                <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#signup-modal" aria-current="page"
+                data-url-signup="{% url 'auth:signup' %}" data-signup>{% translate signup %}
+              </a>
+            </li>
+            <li class="btn btn-secondary m-2">
+              <a class="nav-link text-light" href="#" data-bs-toggle="modal" data-bs-target="#mosi"
+                data-url="{% url 'auth:signin' %}" data-url-next="{% url 'auth:signin' %}?next=/app/" data-signin>{% translate login %}
+              </a> 
+            </li>
+          </ul>   
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div id="lang-selector" class="position-absolute lang-top end-0 me-3 btn btn-sm btn-secondary">Language: {{ request.path|get_current_url_lang|capfirst }}</div>
+<div id="languages" class="position-absolute lang-top lang-right " hidden>
+    <span class="lang me-2 btn btn-sm btn-secondary" id="fr">Français</span>
+    <span class="lang me-2 btn btn-sm btn-secondary" id="en">English</span>
+</div>
+
+  {% endspaceless %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="m-4 alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+  {% block item_list %}{% endblock item_list %}
+  {% block home %}{% endblock home %}
+  {% block mailbox %}{% endblock mailbox %}
+  {% block create_msg %}{% endblock create_msg %}
+  {% block create_thread %}{% endblock create_thread %}
+  {% block content %}{% endblock content %}
+  {% block signin_modal %}{% endblock signin_modal %}
+  {% block update_item %}{% endblock update_item %}
+  {% block profile %}{% endblock profile %}
+  {% block add_item %}{% endblock add_item %}
+  {% block delete_item %}{% endblock delete_item %}
+  {% block signup %}{% endblock signup %}
+  {% block signin %}{% endblock signin %}
+  {% block upd_form %}{% endblock upd_form %}
+  {% block user_confirm_delete %}{% endblock user_confirm_delete %}
+  {% include 'pages/modal_signin.html' %}
+  {% include 'pages/modal_signup.html' %}
+  <script src="{% static 'js/get_form_signup.js' %}"></script>
+  <script src="{% static 'js/get_form_signin.js' %}"></script>
+  <script src="{% static 'js/post_form_signin.js' %}"></script>
+  <script src="{% static 'js/post_form_signup.js' %}"></script>
+
+
+  <script>
+    const langSelector = document.getElementById("lang-selector")
+    const divLang = document.getElementById("languages")
+    const span = document.getElementsByClassName("lang")
+
+    langSelector.onclick = (event) => {
+        if (event.target.id === "lang-selector" && langSelector.classList.contains("clicked")) {
+            langSelector.classList.remove("clicked");
+            divLang.setAttribute("hidden", "");
+        } else {
+            langSelector.classList.add("clicked");
+            divLang.removeAttribute("hidden", "");
+            span["en"].onclick = (e) => {
+                window.location.href = `/${span["en"].id}/` + "{{ request.path|complete_current_url_lang }}";
+                event.target.innerHTML = "{{ request.path|get_current_url_lang|capfirst }}"
+            }
+            span["fr"].onclick = (e) => {
+                window.location.href = `/${span["fr"].id}/` + "{{ request.path|complete_current_url_lang }}";
+                event.target.innerHTML = "{{ request.path|get_current_url_lang|capfirst }}"
+            }
+        }
+    }
+</script>
+
+  {% if not user.is_authenticated %}
+    <script>
+      let signModals = ["mosi", "signup-modal"]
+
+      signModals.forEach(modal => {
+        var signMod = new bootstrap.Modal(document.getElementById(modal))
+
+        document.addEventListener('keydown', (event) => {
+          if (event.key === 'Escape') {
+            signMod.hide()
+          }
+
+          if (event.key === 'Enter') {
+            event.preventDefault();
+          }
+        })
+      });
+
+      async function getJsonDataSignin(url, headers) {
+        try {
+          const response = await fetch(url, {
+            method: 'GET',
+            headers: headers
+          })
+          return await response.text()
+        } catch (err) {
+          return console.warn(err)
+        }
+      }
+      document.addEventListener("DOMContentLoaded", function () {
+        if (window.location.href.indexOf("#mosi") > -1) {
+          let signinModal = new bootstrap.Modal(document.getElementById('mosi'));
+
+
+          getJsonDataSignin(
+            "/auth/accounts/signin",
+            { "X-CSRFToken": csrftoken }
+          ).then((response) => {
+            sif.innerHTML = response
+          })
+          signinModal.show();
+        }
+      });
+    </script>
+    {% endif %}
+    <script src="{% static 'js/toggle_mode_propa.js' %}"></script>
+    {% if not user.is_authenticated %}
+    <noscript>
+      <a href="{% url 'auth:signin' %}">Se connecter</a>
+    </noscript>
+  {% endif %}
+</body>
+</html>

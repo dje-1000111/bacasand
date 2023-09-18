@@ -1,0 +1,30 @@
+{% block signup %}
+    {% if form.username.errors %}
+        <div class="alert alert-danger mt-3">
+            {{ form.username.errors|escape }}
+        </div>
+    {% endif %}
+    {{ form.username.label_tag }}
+    {{ form.username }}
+    {% if form.email.errors %}
+        <div class="alert alert-danger mt-3">
+            {{ form.email.errors|escape }}
+        </div>
+    {% endif %}
+    {{ form.email.label_tag }}
+    {{ form.email }}
+    {% if form.password1.errors %}
+        <div class="alert alert-danger mt-3">
+            {{ form.password1.errors|escape }}
+        </div>
+    {% endif %}
+    {{ form.password1.label_tag }}
+    {{ form.password1 }}
+    {% if form.password2.errors %}
+        <div class="alert alert-danger mt-3">
+            {{ form.password2.errors|escape }}
+        </div>
+    {% endif %}
+    {{ form.password2.label_tag }}
+    {{ form.password2 }}
+{% endblock %}

@@ -1,0 +1,118 @@
+html {
+    height: 100%;
+    font-size: 0.9em;
+}
+
+body {
+    width: 100%;
+    min-height: 100%;
+    padding: 0 0;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: url("../img/sable.png") fixed;
+}
+
+label {
+    display: block;
+}
+
+.applogo {
+    font-family: 'Black Ops One', cursive;
+}
+
+.lh-applogo {
+    line-height: 0;
+    color: black;
+    font-size: small;
+}
+
+.gal {
+    display: flow-root;
+}
+
+.dark-mode {
+    background-color: rgb(92, 92, 92);
+    transition: background-color 800ms ease;
+    backdrop-filter: sepia(100%);
+}
+
+.w-90 {
+    width: 95%;
+}
+
+.w-75px {
+    width: 75px;
+}
+
+.centerize {
+    margin: 0 auto;
+    float: none;
+}
+
+textarea {
+    resize: none;
+}
+
+.ad {
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.btn-size {
+    width: 2.5em;
+}
+
+.wallbook {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' height='50px' width='320px'><text x='0' y='15' fill='grey' font-size='20'>Organize your thoughts, do your tasks!</text></svg>");
+}
+
+.top50 {
+    top: 50px
+}
+
+@-webkit-keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.fo {
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+}
+
+ul {
+    list-style: none;
+}
+
+.modal-bg {
+    background-color: rgb(69, 64, 72)
+}
+
+.navbar-bg {
+    background-color: #4884b7;
+}
+
+.lang-top {
+    top: 75px;
+}
+
+.lang-right {
+    right: 150px;
+}

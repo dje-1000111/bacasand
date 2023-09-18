@@ -1,0 +1,6 @@
+    {% csrf_token %}
+    <p class="text-bg-light p-3">
+        <b>{{ object.title }}</b>
+        <br>détail :{{ object.task }}
+        <br>du {{ object.date|date:"d m Y" }}
+    </p>

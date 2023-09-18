@@ -1,0 +1,20 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block create_thread %}
+
+<main class="container" id="read-container">
+    <div class="bg-dark-subtle p-5 rounded">
+  <h1>Créer une discussion</h1><hr>
+  <div class="form-group">
+    <form method="post">
+
+      {% csrf_token %} {{form}}
+      <input type="submit" value="Valider" class="btn btn-primary mt-3 me-2 ms-2 float-end" />
+      <a href="{% url 'vmc_sandbox:mailbox_thread' %}"
+        class="btn btn-warning mt-3 float-end">Annuler</a>
+
+    </form>
+  </div>
+</div>
+</main>
+{% endblock create_thread %}

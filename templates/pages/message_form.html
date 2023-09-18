@@ -1,0 +1,31 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% block create_msg %}
+
+<main class="container" id="read-container">
+  <div class="bg-dark-subtle p-5 rounded">
+    {% if thread_id %}
+    <h1>Envoyer une réponse</h1><hr>
+{% else %}
+<h1>Envoyer un message</h1><hr>
+  {% endif %}
+  <div class="form-group">
+    <form method="post">
+
+      {% csrf_token %} 
+      {{form}}
+      
+      <input type="submit" value="Valider" class="btn btn-primary mt-3 me-2 ms-2 float-end" />
+      <a href="
+      {% if thread_id %}
+      {% url 'vmc_sandbox:mailbox_msgs' thread_id %}
+      {% else %}
+      {% url 'vmc_sandbox:mailbox_thread' %}
+      {% endif %}
+       " class="btn btn-warning mt-3 float-end">Annuler</a>
+
+    </form>
+  </div>
+</div>
+</main>
+{% endblock create_msg %}

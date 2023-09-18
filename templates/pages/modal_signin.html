@@ -1,0 +1,30 @@
+{% block signin_modal %}
+{% spaceless %}
+<div class="container mt-3" id="modal-container">
+    <!-- Version signin bs-modal -->
+    <div class="modal" id="mosi">
+        <div class="modal-dialog">
+            <div class="modal-content modal-bg">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-light">Log in</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="col-12 p-3 bg-light">
+                    <form method="post">{% csrf_token %}
+                        <div id="sif">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" value="sign-in" id="signin-btn">Se connecter</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endspaceless %}
+{% endblock signin_modal %}

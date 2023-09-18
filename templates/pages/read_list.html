@@ -1,0 +1,69 @@
+{% extends 'pages/base.html' %}
+{% load i18n %}
+
+{% load static %}
+
+{% block title %}BacaSand Index {% endblock %}
+{% block item_list %}
+{% include 'pages/update_item.html' %}
+{% include 'pages/modal_create.html' %}
+{% include 'pages/delete_item.html' %}
+
+<div class="container" id="read-container">
+    {{msg}}
+    <table id="table" class="table table-striped mt-5">
+        <colgroup>
+            <col span="1" style="width: 5%" />
+            <col span="1" style="width: 20%" />
+            <col span="1" style="width: 55%" />
+            <col span="1" style="width: 10%" />
+            <col span="1" style="width: 5%" />
+            <col span="1" style="width: 5%" />
+        </colgroup>
+        <thead>
+            <tr>
+                <th><button id="launcher" data-bs-toggle="modal"
+                    data-bs-target="#create_modal" class="btn btn-primary fa fa-plus" data-launcher></button></th><th></th><th class="text-center">
+                    
+                </th><th></th><th></th><th></th>
+            </tr>
+            <tr>
+                {% for title_head in title_heads %}
+                <th>{% translate title_head %}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody id="tbl-create">
+            {% include 'pages/list.html' %}
+        </tbody>
+    </table>
+</div>
+
+<!-- Scripts: custom JavaScript -->
+<script src="{% static 'js/post_chkbx_done.js' %}"></script>
+<script src="{% static 'js/get_form_create.js' %}"></script>
+<script src="{% static 'js/post_form_create.js' %}"></script>
+<script src="{% static 'js/get_form_update.js' %}"></script>
+<script src="{% static 'js/update_data.js' %}"></script>
+<script src="{% static 'js/get_delete.js' %}"></script>
+<script src="{% static 'js/post_delete.js' %}"></script>
+<script src="{% static 'js/get_index.js' %}"></script>
+
+<script>
+    let = modals = ["create_modal", "update_modal", "delete_modal", "launcher"]
+    modals.forEach(modal => {
+        const readMod = new bootstrap.Modal(document.getElementById(modal))
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                readMod.hide()
+            }
+
+            // Using this to avoid the problem of blank page on form validation from pushing Enter on input
+            if (event.key === 'Enter') {
+                event.preventDefault();
+            }
+        })
+    })
+</script>
+
+{% endblock item_list %}

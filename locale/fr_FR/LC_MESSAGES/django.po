@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-09-17 13:55+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\apps\vmc\views.py:37
+msgid ""
+"is an online boot camp (a sandbox) which aims to approach the constraints of "
+"creation and maintenance in real conditions as part of a deployment "
+"continuous."
+msgstr ""
+
+#: .\apps\vmc\views.py:41
+msgid "The techs used are:"
+msgstr ""
+
+#: .\apps\vmc\views.py:42
+msgid "The app will evolve as different features are added."
+msgstr ""
+
+#: .\apps\vmc\views.py:106
+msgid "Status"
+msgstr ""
+
+#: .\apps\vmc\views.py:107 .\config\settings.py:202
+msgid "Title"
+msgstr ""
+
+#: .\apps\vmc\views.py:108
+msgid "Task"
+msgstr ""
+
+#: .\apps\vmc\views.py:109
+msgid "Date"
+msgstr ""
+
+#: .\apps\vmc\views.py:110 .\config\settings.py:200
+msgid "Edit"
+msgstr ""
+
+#: .\apps\vmc\views.py:111
+msgid "Del"
+msgstr ""
+
+#: .\apps\vmc_auth\forms.py:33 .\apps\vmc_auth\forms.py:101
+msgid "e.g. user@mailbox.com"
+msgstr ""
+
+#: .\apps\vmc_auth\forms.py:39
+msgid "Username"
+msgstr ""
+
+#: .\apps\vmc_auth\forms.py:49 .\apps\vmc_auth\forms.py:108
+msgid "Password"
+msgstr ""
+
+#: .\apps\vmc_auth\forms.py:59
+msgid "Password confirmation"
+msgstr ""
+
+#: .\apps\vmc_auth\forms.py:85
+#, python-brace-format
+msgid "The {fieldname} field is required."
+msgstr ""
+
+#: .\apps\vmc_auth\forms.py:88
+msgid "Please enter a correct email and password."
+msgstr ""
+
+#: .\apps\vmc_auth\forms.py:96
+msgid "Email"
+msgstr ""
+
+#: .\config\settings.py:150
+msgid "French"
+msgstr ""
+
+#: .\config\settings.py:151
+msgid "English"
+msgstr ""
+
+#: .\config\settings.py:192
+msgid "Organize your thoughts, do your tasks"
+msgstr ""
+
+#: .\config\settings.py:193
+msgid "My account"
+msgstr ""
+
+#: .\config\settings.py:194
+msgid "Profile"
+msgstr ""
+
+#: .\config\settings.py:195
+msgid "Mailbox"
+msgstr ""
+
+#: .\config\settings.py:196
+msgid "Sign up"
+msgstr ""
+
+#: .\config\settings.py:197
+msgid "Log in"
+msgstr ""
+
+#: .\config\settings.py:198
+msgid "Log out"
+msgstr ""
+
+#: .\config\settings.py:199
+msgid "Add entry"
+msgstr ""
+
+#: .\config\settings.py:201
+msgid "Permanently delete entry"
+msgstr ""
+
+#: .\config\settings.py:203
+msgid "Content"
+msgstr ""
+
+#: .\config\settings.py:204
+msgid "Submit"
+msgstr ""
+
+#: .\config\settings.py:205
+msgid "Cancel"
+msgstr ""

@@ -1,0 +1,30 @@
+{% block delete_item %}
+{% load i18n %}
+{% spaceless %}
+<div class="container mt-3" id="modal-container">
+    <div class="modal" id="delete_modal">
+        <div class="modal-dialog">
+            <div class="modal-content modal-bg">
+                <div class="modal-header">
+                    <h4 class="modal-title text-light">{% translate modal_delete_title %}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="col-12 p-3 bg-light">
+                    <form method="post">
+                        <div id="rmf">
+                          {% include 'pages/delete_object.html' %}
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mr-1" data-bs-dismiss="modal">{% translate cancel %}</button>
+                    <button type="button" class="btn btn-primary m-0"
+                         id="del-validator" data-delete="{{object.pk}}" >{% translate submit %}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endspaceless %}
+{% endblock delete_item %}
+

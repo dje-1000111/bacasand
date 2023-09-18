@@ -1,0 +1,33 @@
+{% block create_modal %}
+{% load i18n %}
+{% spaceless %}
+<div class="container mt-3" id="modal-container">
+    <!-- Version create bs-modal -->
+    <div class="modal" id="create_modal">
+        <div class="modal-dialog">
+            <div class="modal-content modal-bg">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-light">{% translate modal_create_title %}</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="col-12 p-3 bg-light">
+                    <form method="post">
+                        <div id="cf">
+                            {% include 'pages/create_form.html' %}
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary mr-1" data-bs-dismiss="modal">{% translate cancel %}</button>
+                    <button type="button" href="{% url 'vmc_sandbox:index' %}" class="btn btn-primary m-0"
+                         id="validator" data-validate>{% translate submit %}</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endspaceless %}
+{% endblock create_modal %}

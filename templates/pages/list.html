@@ -1,0 +1,32 @@
+{% load i18n %}
+{% for item in item_list %}
+    {% if user.id == item.user_id %}
+        <tr>
+            <td>
+                {% if item.is_done %}
+                    <label class="btn fa fa-check-circle fa-2x text-success pe-2 pb-2 pt-2" id="{{item.pk}}" for="btncheck-{{item.pk}}" aria-hidden="true"></label>
+                    <input name="is-done" data-ckbx type="checkbox" class="btn-check" id="btncheck-{{item.pk}}" value="{{item.pk}}" autocomplete="off" checked>    
+                {% else %}
+                    <label class="btn fa fa-flag fa-2x text-secondary pe-2 pb-2 pt-2" id="{{item.pk}}" for="btncheck-{{item.pk}}"></label>
+                    <input name="is-done" data-ckbx type="checkbox" class="btn-check" id="btncheck-{{item.pk}}" value="{{item.pk}}" autocomplete="off">
+                {% endif %}
+            </td>
+            
+            <td>{{item.title}}</td>
+            <td>{{item.task}}</td>
+            <td>{{item.date|date:'d-m-Y'}}</td>
+            <td>
+                <button id="edit" name="live-edit" data-bs-toggle="modal" data-btn-edit
+                    data-item-id="{{item.pk}}" data-bs-target="#update_modal"
+                    data-url="{% url 'vmc_sandbox:update_form' item.pk %}"
+                    class="btn btn-primary live-edit btn-size fas fa-pen pe-2 pb-2 pt-2">
+                </button>
+            </td>
+            <td>
+                <button class="btn btn-warning btn-size fas fa-trash-alt pe-2 pb-2 pt-2" data-bs-toggle="modal" data-bs-target="#delete_modal" data-btn-delete data-item-id="{{item.pk}}"
+                    id="del" data-btn-del>
+                </button>
+            </td>
+        </tr>
+    {% endif %}
+{% endfor %}

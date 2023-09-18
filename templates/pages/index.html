@@ -1,0 +1,43 @@
+{% extends 'pages/base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %}BacaSand{% endblock %}
+{% block home %}
+<main class="container">
+    <div id="bas" class="bg-light p-5 rounded">
+
+
+        <p><span class="applogo">BacaSand</span> {% translate pres1 %}</p>
+
+        <p>{% translate pres2 %}</p>
+        <div class="gal">
+            <ul>
+                <li><img src="https://www.python.org/static/community_logos/python-logo-master-v3-TM.png" alt="python"
+                        width="150PX" class="m-2 float-start"></li>
+                <li><img src="https://www.djangoproject.com/m/img/logos/django-logo-negative.svg" alt="django"
+                        width="150PX" class="m-2 float-start"></li>
+                <li><img src="https://upload.wikimedia.org/wikipedia/commons/c/c5/Nginx_logo.svg" alt="nginx"
+                        width="150PX" class="m-2 float-start"></li>
+                <li><img src="https://upload.wikimedia.org/wikipedia/commons/0/00/Gunicorn_logo_2010.svg" alt="gunicorn"
+                        width="150PX" class="m-2 float-start"></li>
+                <li><img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="javascript"
+                        width="75px" height="75px" class="m-2 float-start"></li>
+                <li><img src="https://upload.wikimedia.org/wikipedia/fr/b/b3/Jquery-logo.png" alt="jquery" width="150PX"
+                        class="m-2 float-start"></li>
+            </ul>
+        </div>
+        <p>{% translate pres3 %}</p>
+    </div>
+
+
+
+
+
+
+    </div>
+
+
+
+</main>
+{% endblock home %}

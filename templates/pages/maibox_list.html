@@ -1,0 +1,40 @@
+
+{% if message_list %}
+<table id="table" class="table table-striped mt-5">
+    <colgroup>
+        <col span="1" style="width: 5%" />
+        <col span="1" style="width: 15%" />
+        <col span="1" style="width: 60%" />
+        <col span="1" style="width: 15%" />
+        <col span="1" style="width: 5%" />
+    </colgroup>
+    <thead>
+        <tr>
+            <th>Statut</th>
+            <th>Expéditeur</th>
+            <th>Message</th>
+            <th>Date</th>
+            <th>Suppr</th>
+        </tr>
+    </thead>
+    <tbody id="tbl-create">
+
+{% for msg in message_list %}
+    {% if msg.thread_id == thread_id %}
+
+        <tr>
+            <td>{{msg.id}}</td>    
+            <td>{{msg.sender}}</td>
+            <td>{{msg.msg_content}}</td>
+            <td>{{msg.created_at|date:'d-m-Y'}} {{ msg.created_at|time:"H:i" }}</td>
+            <td><a href="{% url 'vmc_sandbox:delete-msg' msg.thread_id msg.id %}"><i class="fa-solid fa-trash-can fa-xl" title="Supprimer"></i></a></td>
+        </tr>
+
+
+    {% endif %}
+{% endfor %}
+
+</tbody>
+</table>
+<a href="{% url 'vmc_sandbox:msg_response' thread_id %}"><i class="fa-solid fa-reply" title="Répondre"></i></a>
+{% endif %}

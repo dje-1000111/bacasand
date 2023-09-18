@@ -1,0 +1,6 @@
+.venv
+.git
+.gitignore
+.mypy_cache
+*.ini
+

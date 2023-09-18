@@ -1,0 +1,28 @@
+{% block update_item %}
+{% load i18n %}
+{% spaceless %}
+<div class="container mt-3">
+    <div class="modal" id="update_modal">
+        <div class="modal-dialog">
+            <div class="modal-content modal-bg">
+                <form method="post" id="post_upd">{% csrf_token %}
+                    <div class="modal-header">
+                        <h4 class="modal-title text-light">{% translate modal_update_title %}</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="col-12 p-3 bg-light">
+                        <div id="muf">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="close" type="button" class="btn btn-secondary" data-bs-dismiss="modal">{% translate cancel %}</button>
+                        <button class="btn btn-primary"
+                            id="btn-update" data-valid-update>{% translate submit %}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endspaceless %}
+{% endblock update_item %}

@@ -1,0 +1,65 @@
+{% extends 'pages/base.html' %}
+{% load i18n %}
+{% load static %}
+{% load extra_filters %}
+{% block title %}Mailbox{% endblock %}
+{% block mailbox %}
+
+{% include 'pages/update_item.html' %}
+{% include 'pages/modal_create.html' %}
+{% include 'pages/delete_item.html' %}
+
+<main class="container" id="read-container">
+    <div class="bg-dark-subtle p-5 rounded">
+        {% if user.is_staff %}
+            {% if thread_id %}
+                <h1>Discussion : {{thread.title}}</h1><hr>
+            {% else %}
+                <h1>Mailbox</h1><hr>
+            {% endif %}
+            
+            {% if "/fr/mailbox/" == request.path or "/en/mailbox/" == request.path %}
+            <h2><a class="btn btn-info mt-5" href="{% url 'vmc_sandbox:create-thread'  %}" >Créer une discussion</a></h2>
+            {% else %}
+            <a href="{% url 'vmc_sandbox:mailbox_thread' %}" class="inbox-icon">Retour Mailbox</a>
+            {% endif %}
+
+            {% for thread in thread_list %}
+                <table id="table" class="table table-striped mt-5">
+                    <colgroup>
+                        <col span="1" style="width: 10%" />
+                        <col span="1" style="width: 20%" />
+                        <col span="1" style="width: 50%" />
+                        <col span="1" style="width: 15%" />
+                        <col span="1" style="width: 5%" />
+                    </colgroup>
+                    <thead>
+                        <tr>
+                        </tr>
+                        <tr>
+                            <th>Émetteur</th>
+                            <th>Destinataire(s)</th>
+                            <th>Discussion</th>
+                            <th>Nb de reponse</th>
+                            <th>Suppr</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbl-create">
+                        {% include 'pages/list.html' %}
+                        <tr>
+                            <td>{{thread.sender|capfirst}}</td>
+                            <td>{{thread.receiver.all|join:", "|title}}</td>
+                            <td><a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{% url 'vmc_sandbox:mailbox_msgs' thread.id %}">{{thread.title}}</a></td>
+                            <td>{{all_msg|count_msg_by_thread:thread.id}} msg</td>
+                            <td><a class="fas fa-trash-alt pe-2 pb-2 pt-2" href="{% url 'vmc_sandbox:delete_thread' thread.id %}"></a></td>
+                        </tr>
+                    </tbody>
+                    
+                </table>
+            {% endfor %}
+            {% include 'pages/maibox_list.html' %}
+        {% else %}Cette page n'existe pas{% endif %}
+    </div>
+</main>
+
+{% endblock mailbox %}

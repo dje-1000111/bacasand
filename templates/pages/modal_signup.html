@@ -1,0 +1,31 @@
+{% block signup_modal %}
+{% spaceless %}
+<div class="container mt-3" id="modal-container">
+    <!-- Version signup bs-modal -->
+    <div class="modal" id="signup-modal">
+        <div class="modal-dialog">
+            <div class="modal-content modal-bg">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-light">Sign up</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <!-- Modal body -->
+                <div class="col-12 p-3 bg-light">
+                    <form method="post">{% csrf_token %}
+                        <div id="suf">
+                            {% include 'pages/signup_form.html' %}
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary" value="sign-up" id="signup-btn">Valider l'inscription</button>
+                    <input type="hidden" name="next" value="{{ next }}" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endspaceless %}
+{% endblock signup_modal %}
