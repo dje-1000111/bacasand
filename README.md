@@ -9,7 +9,6 @@ Of course, the administrator can create a team and its members have an inbox fun
 ## Memo
 
 We have to comment this lines before the first migration:  
-in   
 ```py
 app/vmc/forms.py
 
@@ -18,7 +17,7 @@ class ThreadForm:
 
     class Meta:
         ...
-        
+
         EMAIL_CHOICES = [(user.email, user.email) for user in staff_users]
         if EMAIL_CHOICES:
             widgets = {
