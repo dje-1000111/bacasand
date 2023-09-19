@@ -17,4 +17,4 @@ RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
 COPY . /app
 
 # makemigrations & migrate
-ENTRYPOINT ["/app/migrate.sh"]
+ENTRYPOINT ["/app/migrations.sh"]
