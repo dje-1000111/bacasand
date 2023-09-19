@@ -98,11 +98,11 @@ class ThreadForm(ModelForm):
         }
         staff_users = User.objects.filter(is_staff=True).order_by("username")
         # /!\ Deactivate this two lines before makemigrations
-        EMAIL_CHOICES = [(user.email, user.email) for user in staff_users]
-        if EMAIL_CHOICES:
-            widgets = {
-                "email_choices": forms.SelectMultiple(choices=EMAIL_CHOICES),
-            }
+        # EMAIL_CHOICES = [(user.email, user.email) for user in staff_users]
+        # if EMAIL_CHOICES:
+        #     widgets = {
+        #         "email_choices": forms.SelectMultiple(choices=EMAIL_CHOICES),
+        #     }
 
 
 class MessageForm(ModelForm):
