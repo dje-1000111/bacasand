@@ -10,8 +10,7 @@
 {% include 'pages/delete_item.html' %}
 
 <div class="container" id="read-container">
-    {{msg}}
-    <table id="table" class="table table-striped mt-5">
+    <table id="table" class="table table-striped mt-6">
         <colgroup>
             <col span="1" style="width: 5%" />
             <col span="1" style="width: 20%" />
@@ -24,7 +23,6 @@
             <tr>
                 <th><button id="launcher" data-bs-toggle="modal"
                     data-bs-target="#create_modal" class="btn btn-primary fa fa-plus" data-launcher></button></th><th></th><th class="text-center">
-                    
                 </th><th></th><th></th><th></th>
             </tr>
             <tr>
@@ -44,7 +42,7 @@
 <script src="{% static 'js/get_form_create.js' %}"></script>
 <script src="{% static 'js/post_form_create.js' %}"></script>
 <script src="{% static 'js/get_form_update.js' %}"></script>
-<script src="{% static 'js/update_data.js' %}"></script>
+<script src="{% static 'js/post_form_update.js' %}"></script>
 <script src="{% static 'js/get_delete.js' %}"></script>
 <script src="{% static 'js/post_delete.js' %}"></script>
 <script src="{% static 'js/get_index.js' %}"></script>
@@ -58,7 +56,8 @@
                 readMod.hide()
             }
 
-            // Using this to avoid the problem of blank page on form validation from pushing Enter on input
+            // Using this to avoid the problem of blank page on 
+            // form validation from pushing Enter on input
             if (event.key === 'Enter') {
                 event.preventDefault();
             }

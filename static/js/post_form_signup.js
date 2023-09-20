@@ -27,7 +27,7 @@ supModal.addEventListener("keydown", function (e) {
                 } else {
                     var modalSup = bootstrap.Modal.getInstance(supModal)
                     modalSup.hide();
-                    // window.location.href = ajax_url_index;
+                    window.location.href = ajax_url_index;
                 }
             })
         }
@@ -58,7 +58,7 @@ signupBtn.addEventListener('click', function (event) {
         } else {
             var modalSup = bootstrap.Modal.getInstance(supModal)
             modalSup.hide();
-            // window.location.href = ajax_url_index;
+            window.location.href = ajax_url_index;
         }
     })
 })

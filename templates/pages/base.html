@@ -23,7 +23,7 @@
 <body id="base">
   {% csrf_token %}
   <script type="text/javascript">
-    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
     const ajax_url_update_item = "{# url 'vmc_sandbox:get_datas_from_backend' #}"
     const ajax_url_update_modal = "{# url 'vmc_sandbox:update_modal' #}"
     const ajax_url_get_form_create = "{% url 'vmc_sandbox:create_form' %}"

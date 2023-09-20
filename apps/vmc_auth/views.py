@@ -1,6 +1,8 @@
 """Item auth views."""
 from typing import Any, Dict
 
+from django.forms.models import BaseModelForm
+from django.http import HttpResponse, JsonResponse, HttpRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import authenticate, logout
@@ -11,6 +13,8 @@ from .forms import SignupForm, SigninForm
 from django.contrib import messages
 from django.utils.safestring import mark_safe
 from django.urls import reverse_lazy
+
+# from django.dispatch import receiver
 
 # from django.utils.translation import gettext_lazy as _
 from apps.vmc_auth.models import User
@@ -110,21 +114,28 @@ class DeleteAccount(LoginRequiredMixin, DeleteView):
             return redirect(self.success_url)
         return self.render_to_response(context)
 
-    def render_to_response(self, context, **response_kwargs):
-        if self.get_object() != self.request.user:
-            messages.success(
-                self.request,
-                mark_safe(
-                    "Cette action n'est pas possible.\
-                        Le compte que tu cherches à supprimer n'existe pas."
-                ),
-            )
-            return redirect("index")
-        messages.success(
-            self.request,
-            mark_safe("Le compte à bien été supprimé."),
-        )
-        return super().render_to_response(context)
+    def form_valid(self, form: BaseModelForm) -> HttpResponse:
+        """Form valid."""
+        self.object = self.get_object()
+        msg = f"The account: {self.object.title} was successfully deleted."
+        self.object.delete()
+        return HttpResponse(status=204, headers={"Msg-Status": msg})
+
+    # def render_to_response(self, context, **response_kwargs):
+    #     if self.get_object() != self.request.user:
+    #         messages.success(
+    #             self.request,
+    #             mark_safe(
+    #                 "Cette action n'est pas possible.\
+    #                     Le compte que tu cherches à supprimer n'existe pas."
+    #             ),
+    #         )
+    #         return redirect("index")
+    #     messages.success(
+    #         self.request,
+    #         mark_safe("Le compte à bien été supprimé."),
+    #     )
+    #     return super().render_to_response(context)
 
 
 def user_logout(request):

@@ -27,9 +27,7 @@ POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 HOST = os.getenv("HOST")
 DJANGO_ENV = os.getenv("DJANGO_ENV")
-ALLOWEDHOSTS = os.getenv("ALLOWED_HOSTS")
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -46,8 +44,7 @@ else:
     DEBUG = True
 
 
-# ALLOWED_HOSTS: List[str | None] = [ALLOWEDHOSTS]
-ALLOWED_HOSTS = ["127.0.0.1"]  # ["*"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 
 # Application definition

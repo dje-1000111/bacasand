@@ -177,11 +177,6 @@ class UpdateItem(LoginRequiredMixin, UpdateView):
         """Get context data."""
         context = super().get_context_data(**kwargs)
         context["update_form"] = context.get("form")
-        context.update(
-            {
-                "update_form": context.get("form"),
-            }
-        )
         return context
 
     def get_success_url(self) -> str:
