@@ -53,7 +53,6 @@ updModal.addEventListener("keydown", function (e) {
 
 updateBtn.addEventListener("click", function () {
     const itemId = muf.dataset.itemId
-    console.log("EDIT", "item" + "/" + Number(itemId) + "/" + "edit")
     fetch("item" + "/" + Number(itemId) + "/" + "edit", {
         method: 'POST',
         headers: {
